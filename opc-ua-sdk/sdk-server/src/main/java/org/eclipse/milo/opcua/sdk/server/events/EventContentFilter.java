@@ -27,7 +27,7 @@ import org.eclipse.milo.opcua.sdk.core.Reference;
 import org.eclipse.milo.opcua.sdk.core.ValueRanks;
 import org.eclipse.milo.opcua.sdk.server.OpcUaServer;
 import org.eclipse.milo.opcua.sdk.server.Session;
-import org.eclipse.milo.opcua.sdk.server.UaNodeManager;
+import org.eclipse.milo.opcua.sdk.server.api.NodeManager;
 import org.eclipse.milo.opcua.sdk.server.api.nodes.Node;
 import org.eclipse.milo.opcua.sdk.server.api.nodes.ObjectTypeNode;
 import org.eclipse.milo.opcua.sdk.server.api.nodes.VariableNode;
@@ -451,7 +451,7 @@ public class EventContentFilter {
         }
     }
 
-    private static boolean subtypeOf(NodeId typeId, NodeId superTypeId, UaNodeManager nodeManager) {
+    private static boolean subtypeOf(NodeId typeId, NodeId superTypeId, NodeManager<UaNode> nodeManager) {
         UaNode node = nodeManager.get(typeId);
 
         if (node instanceof ObjectTypeNode) {
@@ -464,7 +464,7 @@ public class EventContentFilter {
         }
     }
 
-    private static Optional<UaNode> getParentTypeDefinition(UaNode node, UaNodeManager nodeManager) {
+    private static Optional<UaNode> getParentTypeDefinition(UaNode node, NodeManager<UaNode> nodeManager) {
         return nodeManager.getReferences(node.getNodeId())
             .stream()
             .filter(Reference.SUBTYPE_OF)

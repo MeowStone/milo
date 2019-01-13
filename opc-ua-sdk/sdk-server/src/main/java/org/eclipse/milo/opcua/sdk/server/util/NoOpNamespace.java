@@ -23,6 +23,8 @@ import org.eclipse.milo.opcua.sdk.server.api.DataItem;
 import org.eclipse.milo.opcua.sdk.server.api.EventItem;
 import org.eclipse.milo.opcua.sdk.server.api.MonitoredItem;
 import org.eclipse.milo.opcua.sdk.server.api.Namespace;
+import org.eclipse.milo.opcua.sdk.server.api.NodeManager;
+import org.eclipse.milo.opcua.sdk.server.nodes.UaNode;
 import org.eclipse.milo.opcua.stack.core.StatusCodes;
 import org.eclipse.milo.opcua.stack.core.UaException;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
@@ -45,6 +47,11 @@ public class NoOpNamespace implements Namespace {
     @Override
     public String getNamespaceUri() {
         return getClass().getSimpleName();
+    }
+
+    @Override
+    public NodeManager<UaNode> getNodeManager() {
+        return null; // TODO NoOpNodeManager?
     }
 
     @Override
