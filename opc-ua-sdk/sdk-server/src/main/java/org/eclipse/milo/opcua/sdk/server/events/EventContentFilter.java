@@ -221,6 +221,14 @@ public class EventContentFilter {
 
         FilterOperator filterOperator = filterElement.getFilterOperator();
 
+        if (!Operators.SUPPORTED_OPERATORS.contains(filterOperator)) {
+            return new ContentFilterElementResult(
+                new StatusCode(StatusCodes.Bad_FilterOperatorUnsupported),
+                new StatusCode[0],
+                new DiagnosticInfo[0]
+            );
+        }
+
         ExtensionObject[] xos = filterElement.getFilterOperands();
 
         if (xos == null || xos.length == 0) {
