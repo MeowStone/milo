@@ -37,7 +37,7 @@ import org.eclipse.milo.opcua.stack.core.types.structured.WriteValue;
 
 import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.ushort;
 
-public class NoOpNamespace implements Namespace {
+public class UnknownNamespace implements Namespace {
 
     @Override
     public UShort getNamespaceIndex() {
@@ -51,7 +51,7 @@ public class NoOpNamespace implements Namespace {
 
     @Override
     public NodeManager<UaNode> getNodeManager() {
-        return null; // TODO NoOpNodeManager?
+        return NoOpNodeManager.INSTANCE;
     }
 
     @Override
