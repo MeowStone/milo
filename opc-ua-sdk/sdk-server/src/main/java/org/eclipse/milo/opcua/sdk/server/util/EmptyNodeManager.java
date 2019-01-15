@@ -9,11 +9,11 @@ import org.eclipse.milo.opcua.sdk.server.api.NodeManager;
 import org.eclipse.milo.opcua.sdk.server.nodes.UaNode;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 
-public class NoOpNodeManager implements NodeManager<UaNode> {
+public class EmptyNodeManager implements NodeManager<UaNode> {
 
-    public static NoOpNodeManager INSTANCE = new NoOpNodeManager();
+    public static EmptyNodeManager INSTANCE = new EmptyNodeManager();
 
-    private NoOpNodeManager() {}
+    private EmptyNodeManager() {}
 
     @Override
     public void addNode(UaNode node) {}

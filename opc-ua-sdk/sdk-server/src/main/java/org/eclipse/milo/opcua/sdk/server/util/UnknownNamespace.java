@@ -51,7 +51,7 @@ public class UnknownNamespace implements Namespace {
 
     @Override
     public NodeManager<UaNode> getNodeManager() {
-        return NoOpNodeManager.INSTANCE;
+        return EmptyNodeManager.INSTANCE;
     }
 
     @Override
